@@ -1,0 +1,17 @@
+name: Development Performance Metrics
+on:
+  pull_request:
+    types: [opened, closed]
+jobs:
+  metrics:
+    name: Track merge request activity
+    runs-on: ubuntu-latest
+    steps:
+      - id: datadog-metrics
+        uses: caquino/dpm@main
+        with:
+          metrics-prefix: 'github.action'
+          teams: '[ "dpm", "development", "devops" ]'
+          datadog-api-token: ${{ secrets.DD_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          custom-tags: '["product:dpm", "environment:test"]'
