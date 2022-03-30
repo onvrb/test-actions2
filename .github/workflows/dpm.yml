@@ -20,5 +20,6 @@ jobs:
           custom-tags: '["product:dpm", "environment:test"]'
           labels-whitelist: '["feature", "bug"]'
           branches-whitelist: '[]'
+          datadog-api-host: 'app.datadoghq.eu'
         env:
           DEBUG: 'metrics'
